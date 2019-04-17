@@ -34,10 +34,10 @@ class SimpleTest {
 
   @BeforeAll
   static void setUp() throws Exception {
-    String url = "jdbc:tc:mysql:5.6.43://hostname/?TC_INITSCRIPT=test/CreateDB.sql&TC_MY_CNF=mysql_conf&TC_DAEMON=true";
+    String url = "jdbc:mysql://localhost/test";
     Configuration configuration = new Configuration();
     Environment environment = new Environment("development", new JdbcTransactionFactory(),
-      new UnpooledDataSource("com.mysql.cj.jdbc.Driver", url, "root", ""));
+      new UnpooledDataSource("org.mariadb.jdbc.Driver", url, "root", ""));
     configuration.setEnvironment(environment);
     configuration.addMapper(Mapper.class);
     configuration.setLogImpl(Slf4jImpl.class);
